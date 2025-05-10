@@ -1,4 +1,5 @@
-package CS361_Projects;
+package algorithms;
+
 public class SolutionHeap {
     
     private static void heapifySort(int[] heap, int i, int heapSize) {
@@ -35,6 +36,27 @@ public class SolutionHeap {
             heapifySort(arr, 0, i);
         }
         heap.setSize(size);
+    }
+
+    public static void sort(int[] arr) {
+        Heap heap = new Heap(arr.length);
+        for (int num : arr) {
+            heap.add(num);
+        }
+        HeapSort(heap);
+        int[] sorted = heap.getHeapArray();
+        System.arraycopy(sorted, 0, arr, 0, arr.length);
+    }
+
+    public static void sort(double[] arr) {
+        int[] tmp = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            tmp[i] = (int) arr[i];
+        }
+        sort(tmp);
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = tmp[i];
+        }
     }
 
     static class Heap {

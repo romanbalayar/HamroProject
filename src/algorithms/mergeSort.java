@@ -1,4 +1,4 @@
-package CS361_Projects;
+package algorithms;
 
 public class mergeSort {
 
@@ -6,7 +6,6 @@ public class mergeSort {
         divThre(arr, 0, arr.length - 1);
     }
 
-    // Divide input into three parts
     public static void divThre(int[] arr, int si, int ei) {
         if (ei - si < 2) {
             return;
@@ -38,6 +37,21 @@ public class mergeSort {
         merge(arr, si, mid1, mid2, ei);
     }
 
+    private static void divThre(double[] arr, int si, int ei) {
+        if (ei - si < 2) return;
+
+        int total = ei - si + 1;
+        int part  = total / 3;
+        int rem   = total % 3;
+        int mid1  = si + part + (rem > 0 ? 1 : 0) - 1;
+        int mid2  = mid1 + part + (rem > 1 ? 1 : 0);
+
+        divThre(arr, si, mid1);
+        divThre(arr, mid1 + 1, mid2);
+        divThre(arr, mid2 + 1, ei);
+        merge(arr, si, mid1, mid2, ei);
+    }
+
     public static void merge(int[] arr, int si, int mid1, int mid2, int ei) {
         int[] left = new int[mid1 - si + 1];
         int[] middle = new int[mid2 - mid1];
@@ -56,7 +70,6 @@ public class mergeSort {
         int i = 0, j = 0, k = 0;
         int idx = si;
 
-        // Merge all three arrays together
         while (i < left.length && j < middle.length && k < right.length) {
             if (left[i] <= middle[j]) {
                 if (left[i] <= right[k]) {
@@ -73,7 +86,6 @@ public class mergeSort {
             }
         }
 
-        // Merge left and middle
         while (i < left.length && j < middle.length) {
             if (left[i] <= middle[j]) {
                 arr[idx++] = left[i++];
@@ -82,7 +94,6 @@ public class mergeSort {
             }
         }
 
-        // Merge middle and right
         while (j < middle.length && k < right.length) {
             if (middle[j] <= right[k]) {
                 arr[idx++] = middle[j++];
@@ -91,7 +102,6 @@ public class mergeSort {
             }
         }
 
-        // Merge left and right
         while (i < left.length && k < right.length) {
             if (left[i] <= right[k]) {
                 arr[idx++] = left[i++];
@@ -100,8 +110,6 @@ public class mergeSort {
             }
         }
 
-
-        // Copy remaining elements
         while (i < left.length) {
             arr[idx++] = left[i++];
         }
@@ -115,11 +123,38 @@ public class mergeSort {
         }
     }
 
+    private static void merge(double[] arr, int si, int mid1, int mid2, int ei) {
+        double[] temp = new double[ei - si + 1];
+        int i = si, j = mid1 + 1, k = mid2 + 1, t = 0;
+
+        while (i <= mid1 && j <= mid2 && k <= ei) {
+            if (arr[i] <= arr[j] && arr[i] <= arr[k]) temp[t++] = arr[i++];
+            else if (arr[j] <= arr[i] && arr[j] <= arr[k]) temp[t++] = arr[j++];
+            else temp[t++] = arr[k++];
+        }
+        while (i <= mid1 && j <= mid2) temp[t++] = (arr[i] <= arr[j]) ? arr[i++] : arr[j++];
+        while (j <= mid2 && k <= ei) temp[t++] = (arr[j] <= arr[k]) ? arr[j++] : arr[k++];
+        while (i <= mid1 && k <= ei) temp[t++] = (arr[i] <= arr[k]) ? arr[i++] : arr[k++];
+        while (i <= mid1) temp[t++] = arr[i++];
+        while (j <= mid2) temp[t++] = arr[j++];
+        while (k <= ei) temp[t++] = arr[k++];
+
+        System.arraycopy(temp, 0, arr, si, temp.length);
+    }
+
     public static void printArray(int arr[]) {
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i] + " ");
         }
         System.out.println();
+    }
+
+    public static void sort(int[] arr) {
+        mergeSrt(arr);
+    }
+
+    public static void sort(double[] arr) {
+        divThre(arr, 0, arr.length - 1);
     }
 
 

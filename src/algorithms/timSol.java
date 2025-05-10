@@ -1,10 +1,9 @@
-package CS361_Projects;
+package algorithms;
 
 public class timSol {
 
-    static final int RUN = 32;
+    public static final int RUN = 32;
 
-    // insertion sort for subarrays
     public static void insertionSort(int[] arr, int si, int ei) {
         for (int i = si + 1; i <= ei; i++) {
             int curr = arr[i];
@@ -18,7 +17,6 @@ public class timSol {
         }
     }
 
-    // mergeSort merge function 
     public static void merge(int[] arr, int si, int mid, int ei) {
         int[] temp = new int[ei - si + 1];
         int i = si;
@@ -46,17 +44,14 @@ public class timSol {
         }
     }
 
-    // TimSort logic
     public static void timSort(int[] arr) {
         int n = arr.length;
 
-        // Step 1: sort small chunks using insertion sort
         for (int i = 0; i < n; i += RUN) {
             int end = Math.min(i + RUN - 1, n - 1);
             insertionSort(arr, i, end);
         }
 
-        // Step 2: merge sorted chunks using merge()
         for (int size = RUN; size < n; size = 2 * size) {
             for (int si = 0; si < n; si += 2 * size) {
                 int mid = si + size - 1;
@@ -69,10 +64,24 @@ public class timSol {
         }
     }
 
-    // Print function 
     public static void printArr(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
+        }
+    }
+
+    public static void sort(int[] arr) {
+        timSort(arr);
+    }
+
+    public static void sort(double[] arr) {
+        int[] tmp = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            tmp[i] = (int) arr[i];
+        }
+        sort(tmp);
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = tmp[i];
         }
     }
 
