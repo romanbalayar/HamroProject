@@ -9,24 +9,31 @@ public class Benchmark {
 
     static final int R = 5;
 
+    // static final int[] POWERS = {
+    //     20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+    // };
+
     static final int[] POWERS = {
-            20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+        20, 21, 22, 23, 24, 25, 26
     };
+
     static final String[] TYPES = {"int", "double"};
     static final String[] ALGORITHMS = {
-            "QuadHeap", "ThreeWayMerge", "QuickSort", "TimSort"
+        "QuadHeap", "ThreeWayMerge", "QuickSort", "TimSort"
     };
 
     public static void main(String[] args) throws IOException {
         try (FileWriter writer = new FileWriter("benchmark_results.csv")) {
-            writer.write("algorithm,input_type,input_size,time_ms\n");
+            // Header matches the five values below
+            writer.write("algorithm,input_type,input_size,avg_ns,avg_ms\n");
 
             for (String type : TYPES) {
                 for (int p : POWERS) {
-                    int n = 2 ^ p;
+                    int n = 1 << p;              
 
                     for (String algo : ALGORITHMS) {
                         long sumNs = 0;
+
                         for (int t = 0; t < R; t++) {
                             if (type.equals("int")) {
                                 int[] data = randomInts(n);
@@ -42,21 +49,28 @@ public class Benchmark {
                                 sumNs += System.nanoTime() - t0;
                             }
                         }
+
                         long avgNs = sumNs / R;
                         double avgMs = avgNs / 1_000_000.0;
 
                         writer.write(String.format(
-                                "%s,%s,%d,%d,%.3f\n",
-                                algo, type, n, avgNs, avgMs
+                            "%s,%s,%d,%d,%.3f\n",
+                            algo,    // algorithm name
+                            type,    // "int" or "double"
+                            n,       // input size
+                            avgNs,   // average nanoseconds
+                            avgMs    // average milliseconds
                         ));
+
                         System.out.printf(
-                                "%s %s 2^%d → avg %.0fµs (%.3fms)%n",
-                                algo, type, p, avgNs / 1_000.0, avgMs
+                            "%s %s 2^%d → avg %.0fµs (%.3fms)%n",
+                            algo, type, p, avgNs / 1_000.0, avgMs
                         );
                     }
                 }
             }
         }
+
         System.out.println("Completed. Check benchmark_results.csv");
     }
 
@@ -68,6 +82,7 @@ public class Benchmark {
             case "TimSort":       timSol.sort(arr);            break;
         }
     }
+
     static void runSort(String algo, double[] arr) {
         switch (algo) {
             case "QuadHeap":      SolutionHeap.sort(arr);      break;
