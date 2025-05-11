@@ -72,7 +72,8 @@ public class test {
             SolutionHeap.sort(arr4);
             printArray(arr4);
 
-            System.out.println("----------------------------------");
+            System.out.println("\n");
+            System.out.println("\n");
         }
     }
 }
