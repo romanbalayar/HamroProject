@@ -7,9 +7,7 @@ public class mergeSort {
     }
 
     public static void divThre(int[] arr, int si, int ei) {
-        if (ei - si < 2) {
-            return;
-        }
+        if (si >= ei) return;
 
         int total = ei - si + 1;
         int part = total / 3;
@@ -28,6 +26,9 @@ public class mergeSort {
 
         int mid1 = si + part + (rem > 0 ? 1 : 0) - 1;
         int mid2 = mid1 + part + (rem > 1 ? 1 : 0);
+
+        if (mid1 >= ei) mid1 = si + (ei - si) / 3;
+        if (mid2 >= ei) mid2 = si + 2 * (ei - si) / 3;
 
 
         divThre(arr, si, mid1);
@@ -158,28 +159,30 @@ public class mergeSort {
     }
 
 
-    public static void main(String[] args) {
 
-        int[] test1 = {45, 23, 78, 12, 99, 34, 7, 56, 89, 3};
-        System.out.println("Original array 1:");
-        printArray(test1);
-        mergeSrt(test1);
-        System.out.println("Sorted array 1:");
-        printArray(test1);
-    
-        int[] test2 = {5, 2, 9, 1, 6, 3, 8, 4, 7};
-        System.out.println("\nOriginal array 2:");
-        printArray(test2);
-        mergeSrt(test2);
-        System.out.println("Sorted array 2:");
-        printArray(test2);
-    
-        int[] test3 = {10, 20, 30, 40, 50, 60};
-        System.out.println("\nOriginal array 3:");
-        printArray(test3);
-        mergeSrt(test3);
-        System.out.println("Sorted array 3:");
-        printArray(test3);
-    }
-    
+//    public static void main(String[] args) {
+//
+//        int[] test1 = {45, 23, 78, 12, 99, 34, 7, 56, 89, 3};
+//        System.out.println("Original array 1:");
+//        printArray(test1);
+//        mergeSrt(test1);
+//        System.out.println("Sorted array 1:");
+//        printArray(test1);
+//
+//        int[] test2 = {5, 2, 9, 1, 6, 3, 8, 4, 7};
+//        System.out.println("\nOriginal array 2:");
+//        printArray(test2);
+//        mergeSrt(test2);
+//        System.out.println("Sorted array 2:");
+//        printArray(test2);
+//
+//        int[] test3 = {10, 20, 30, 40, 50, 60};
+//        System.out.println("\nOriginal array 3:");
+//        printArray(test3);
+//        mergeSrt(test3);
+//        System.out.println("Sorted array 3:");
+//        printArray(test3);
+//    }
+
+
 }

@@ -158,41 +158,45 @@ public class SolutionHeap {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println("Testing Quad Heap Operations:");
-        Heap heap = new Heap(10);
 
-        heap.add(5);
-        heap.add(3);
-        heap.add(8);
-        heap.add(1);
-        heap.add(2);
-        heap.add(7);
-        heap.add(6);
-        heap.add(4);
 
-        System.out.print("insertions of ");
-        heap.print();
+//    public static void main(String[] args) {
+//        System.out.println("Testing Quad Heap Operations:");
+//        Heap heap = new Heap(10);
+//
+//        heap.add(5);
+//        heap.add(3);
+//        heap.add(8);
+//        heap.add(1);
+//        heap.add(2);
+//        heap.add(7);
+//        heap.add(6);
+//        heap.add(4);
+//
+//        System.out.print("insertions of ");
+//        heap.print();
+//
+//        System.out.print("Removing  elements: ");
+//        while (!heap.isEmpty()) {
+//            System.out.print( heap.remove() + " ");
+//        }
+//        System.out.println();
+//
+//        System.out.println("\nTesting Heap Sort ");
+//
+//        int[] arr = {12, 11, 13, 5, 6, 7, 3, 2, 8};
+//        Heap sortHeap = new Heap(arr.length);
+//        for (int num : arr) {
+//            sortHeap.add(num);
+//        }
+//
+//        System.out.print("Original array ");
+//        sortHeap.print();
+//
+//        HeapSort(sortHeap);
+//        System.out.print("Sorted arr  of ");
+//        sortHeap.print();
+//    }
 
-        System.out.print("Removing  elements: ");
-        while (!heap.isEmpty()) {
-            System.out.print( heap.remove() + " ");
-        }
-        System.out.println();
 
-        System.out.println("\nTesting Heap Sort ");
-
-        int[] arr = {12, 11, 13, 5, 6, 7, 3, 2, 8};
-        Heap sortHeap = new Heap(arr.length);
-        for (int num : arr) {
-            sortHeap.add(num);
-        }
-
-        System.out.print("Original array ");
-        sortHeap.print();
-
-        HeapSort(sortHeap);
-        System.out.print("Sorted arr  of ");
-        sortHeap.print();
-    }
 }

@@ -85,9 +85,13 @@ public class RandomQuickSort {
         quickSort(A, 0, A.length - 1);
     }
 
-    public static void main(String[] args) {
-        int arr[] = {6, 3, 9, 8, 2, 5};
-        quickSort(arr, 0, arr.length - 1);
-        printArr(arr);
-    }
+
+
+//    public static void main(String[] args) {
+//        int arr[] = {6, 3, 9, 8, 2, 5};
+//        quickSort(arr, 0, arr.length - 1);
+//        printArr(arr);
+//    }
+
+
 }

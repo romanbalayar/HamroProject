@@ -85,15 +85,17 @@ public class timSol {
         }
     }
 
-    public static void main(String[] args) {
-        int[] arr = { 10, 3, 2, 19, 7, 15, 23, 13, 1 };
+//    public static void main(String[] args) {
+//        int[] arr = { 10, 3, 2, 19, 7, 15, 23, 13, 1 };
+//
+//        System.out.println("Original array:");
+//        printArr(arr);
+//
+//        timSort(arr);
+//
+//        System.out.println("\nSorted array:");
+//        printArr(arr);
+//    }
 
-        System.out.println("Original array:");
-        printArr(arr);
 
-        timSort(arr);
-
-        System.out.println("\nSorted array:");
-        printArr(arr);
-    }
 }
