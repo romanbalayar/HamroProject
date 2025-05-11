@@ -5,6 +5,17 @@ import java.util.*;
 
 public class test {
 
+    public static void printArray(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+
+    public static int[] copyArray(int[] arr) {
+        return Arrays.copyOf(arr, arr.length);
+    }
+
     public static Map<String, int[]> readLabeledInput(String filename) throws IOException {
         Map<String, int[]> testCases = new LinkedHashMap<>();
         BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -28,16 +39,7 @@ public class test {
         return testCases;
     }
 
-    public static int[] copyArray(int[] arr) {
-        return Arrays.copyOf(arr, arr.length);
-    }
 
-    public static void printArray(int[] arr) {
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
-    }
 
     public static void main(String[] args) throws IOException {
         String filePath = "src/input/input.txt";
