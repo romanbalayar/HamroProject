@@ -1,3 +1,4 @@
+
 package algorithms;
 
 import java.io.*;
@@ -29,7 +30,7 @@ public class test {
 
                 int[] arr = new int[nums.length];
                 for (int i = 0; i < nums.length; i++) {
-                    arr[i] = Integer.parseInt(nums[i]);
+                    arr[i] = Integer.parseInt(nums[i].replaceAll("[^\\d-]", ""));
                 }
                 testCases.put(label, arr);
             }
