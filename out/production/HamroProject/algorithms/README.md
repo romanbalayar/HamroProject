@@ -1,4 +1,0 @@
-# Hamro Project
-
-Final one
-
