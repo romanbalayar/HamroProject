@@ -143,13 +143,6 @@ public class mergeSort {
         System.arraycopy(temp, 0, arr, si, temp.length);
     }
 
-    public static void printArray(int arr[]) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i] + " ");
-        }
-        System.out.println();
-    }
-
     public static void sort(int[] arr) {
         mergeSrt(arr);
     }
@@ -158,31 +151,6 @@ public class mergeSort {
         divThre(arr, 0, arr.length - 1);
     }
 
-
-
-//    public static void main(String[] args) {
-//
-//        int[] test1 = {45, 23, 78, 12, 99, 34, 7, 56, 89, 3};
-//        System.out.println("Original array 1:");
-//        printArray(test1);
-//        mergeSrt(test1);
-//        System.out.println("Sorted array 1:");
-//        printArray(test1);
-//
-//        int[] test2 = {5, 2, 9, 1, 6, 3, 8, 4, 7};
-//        System.out.println("\nOriginal array 2:");
-//        printArray(test2);
-//        mergeSrt(test2);
-//        System.out.println("Sorted array 2:");
-//        printArray(test2);
-//
-//        int[] test3 = {10, 20, 30, 40, 50, 60};
-//        System.out.println("\nOriginal array 3:");
-//        printArray(test3);
-//        mergeSrt(test3);
-//        System.out.println("Sorted array 3:");
-//        printArray(test3);
-//    }
 
 
 }
